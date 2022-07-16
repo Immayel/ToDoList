@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ToDolist</title>
+    <meta name=" viewport " content="width=devoce-width, initial-scale=1.0">
+    
+    <link rel="stylesheet"  href="style.css">
+</head>
+<body>
+<div class="container">
+    <h2> To Do List </h2>
+    <form>
+        <input type="text" id="listitem" autocomplete="off" placeholder="List item"/>
+     <button id="add">Add</button>
+    </form>
+    <ul id="list"></ul>
+</div>
+</body>
+<script>
+ let add= document.querySelector("#add");
+ let list= document.querySelector("#list");
+ add.onclick = (e) => {
+    e.preventDefault();
+    let listitem= document.querySelector("#listitem");
+    if (listitem.value !== ''){
+        let el = document.createElement("li");
+        el.innerHTML = listitem.value;
+        let removebtn = document.createElement("button");
+        removebtn.className = "close";
+        removebtn.innerHTML="\u00D7";
+        el.appendChild(removebtn);
+        list.appendChild(el);
+        listitem.value="";
+        el.addEventListener("click",(e)=>{
+            e.target.style.textDecoration="line-through";
+        })
+        removebtn.addEventListener("click",(e)=>{
+            e.target.parentElement.style.display="none";
+        });
+
+    }else{
+        alert("No input\n Write something!!");
+    }
+ }
+
+
+
+    </script>
+    
+</html>
